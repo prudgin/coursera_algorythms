@@ -2,12 +2,12 @@ import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class PercolationOld {
 
-    private final WeightedQuickUnionUF grid;
-    private final int n;
-    private final boolean[] openGrid;
-    private final boolean[] fullGrid;
-    private int openCount;
-    private boolean doPercolate;
+    public final WeightedQuickUnionUF grid;
+    public final int n;
+    public final boolean[] openGrid;
+    public final boolean[] fullGrid;
+    public int openCount;
+    public boolean doPercolate;
 
     // creates n-by-n grid, with all sites initially blocked
     public PercolationOld(int n) {
@@ -32,12 +32,12 @@ public class PercolationOld {
         // this is my fucking intent
     }
 
-    private int vector2index(int row, int col) {
+    public int vector2index(int row, int col) {
         // row - 1 = count of full rows, -1 for index starting with 0, +1 for virtual element
         return (row - 1) * n + col - 1 + 1;
     }
 
-    private void openUp(int row, int col) {
+    public void openUp(int row, int col) {
         int curIndex = vector2index(row, col);
         int neighIndex = vector2index(row - 1, col);
         if (row == 1) {
@@ -49,7 +49,7 @@ public class PercolationOld {
         }
     }
 
-    private void openDown(int row, int col) {
+    public void openDown(int row, int col) {
         int curIndex = vector2index(row, col);
         int neighIndex = vector2index(row + 1, col);
         if (row < n && openGrid[neighIndex]) {
@@ -58,7 +58,7 @@ public class PercolationOld {
 
     }
 
-    private void openLeft(int row, int col) {
+    public void openLeft(int row, int col) {
         int curIndex = vector2index(row, col);
         int neighIndex = vector2index(row, col - 1);
         if (col != 1) {
@@ -68,7 +68,7 @@ public class PercolationOld {
         }
     }
 
-    private void openRight(int row, int col) {
+    public void openRight(int row, int col) {
         int curIndex = vector2index(row, col);
         int neighIndex = vector2index(row, col + 1);
         if (col != n) {

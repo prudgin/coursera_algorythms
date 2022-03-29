@@ -17,7 +17,6 @@ public class Percolation {
         if (n <= 0) {
             throw new IllegalArgumentException(" n <= 0");
         }
-        // creates a n x n grid;
         doPercolate = false;
         this.n = n;
         int gridLen = n * n;
@@ -142,14 +141,25 @@ public class Percolation {
 
             int curRoot = grid.find(curIndex);
 
-            if (checkTop(upRoot) || checkTop(downRoot) || checkTop(leftRoot) || checkTop(rightRoot)) {
+            if (checkTop(upRoot) ||
+                    checkTop(downRoot) ||
+                    checkTop(leftRoot) ||
+                    checkTop(rightRoot) ||
+                    checkTop(curIndex)) {
+
                 setTop(upRoot);
                 setTop(downRoot);
                 setTop(leftRoot);
                 setTop(rightRoot);
                 setTop(curRoot);
             }
-            if (checkBottom(upRoot) || checkBottom(downRoot) || checkBottom(leftRoot) || checkBottom(rightRoot)) {
+
+            if (checkBottom(upRoot) ||
+                    checkBottom(downRoot) ||
+                    checkBottom(leftRoot) ||
+                    checkBottom(rightRoot) ||
+                    checkBottom(curIndex)) {
+
                 setBottom(upRoot);
                 setBottom(downRoot);
                 setBottom(leftRoot);
