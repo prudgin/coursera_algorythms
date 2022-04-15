@@ -1,29 +1,34 @@
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdDraw;
+import edu.princeton.cs.algs4.StdOut;
+
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
-        RandomizedQueue<String> rq = new RandomizedQueue<>();
-        rq.enqueue("A");
-        rq.enqueue("B");
-        rq.enqueue("C");
-        int aCount = 0;
-        int bCount = 0;
-        int cCount = 0;
-        for (int i = 0; i < 1000; i++){
-            String val = rq.sample();
-            switch (val){
-                case ("A"):
-                    aCount++;
-                    break;
-                case ("B"):
-                    bCount++;
-                    break;
-                case ("C"):
-                    cCount++;
-                    break;
+
+        class Parent {
+            @Override
+            public String toString() {
+                return "this is Parent";
             }
         }
-        System.out.println("A: " + aCount);
-        System.out.println("B: " + bCount);
-        System.out.println("C: " + cCount);
+
+        class Child extends Parent {
+        }
+
+        class C<T extends Parent> {
+            C(T a) {
+                System.out.println(a);
+            }
+        }
+
+        Parent parent = new Parent();
+        Child child = new Child();
+        C<Child> c = new C<>(child); // Ok
+        C<Parent> d = new C<>(parent); // Ok
+        C<Parent> e = new C<>(child); // Compile error - Cannot infer arguments
+        System.out.println(null == null);
 
     }
 }

@@ -1,5 +1,8 @@
+package queues;
+
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdRandom;
+import queues.RandomizedQueue;
 
 public class Permutation {
     public static void main(String[] args) {
